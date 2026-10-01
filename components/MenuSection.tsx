@@ -37,7 +37,13 @@ export const MenuSection: React.FC<MenuSectionProps> = ({ onSelectProductToCusto
   return (
     <section id="menu" className="my-12">
       {/* Header & Controls */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: false, amount: 0.2 }}
+        transition={{ duration: 0.5 }}
+        className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8"
+      >
         <div>
           <span className="inline-flex items-center gap-1.5 text-[11px] font-extrabold tracking-widest text-[#123C2B] uppercase bg-[#FFFDF9] px-3.5 py-1.5 rounded-full border border-[#123C2B]/10 shadow-sm">
             <Flame className="w-3.5 h-3.5 text-[#FF8A50]" />
@@ -70,7 +76,7 @@ export const MenuSection: React.FC<MenuSectionProps> = ({ onSelectProductToCusto
             </button>
           )}
         </div>
-      </div>
+      </motion.div>
 
       {/* Category Pills Bar */}
       <div className="flex items-center gap-2 overflow-x-auto pb-4 no-scrollbar mb-8">
@@ -104,10 +110,11 @@ export const MenuSection: React.FC<MenuSectionProps> = ({ onSelectProductToCusto
           {filteredProducts.map((product) => (
             <motion.div
               layout
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, y: 30, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: false, amount: 0.15 }}
               exit={{ opacity: 0, scale: 0.9 }}
-              transition={{ duration: 0.3 }}
+              transition={{ duration: 0.4 }}
               key={product.id}
               className="bento-card bg-[#FFFDF9] p-6 rounded-[32px] border border-[#123C2B]/10 flex flex-col justify-between hover:shadow-xl transition-all group"
             >

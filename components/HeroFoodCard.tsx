@@ -19,9 +19,10 @@ export const HeroFoodCard: React.FC = () => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, ease: 'easeOut' }}
+      initial={{ opacity: 0, y: 35, scale: 0.97 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: false, amount: 0.25 }}
+      transition={{ duration: 0.6, ease: [0.25, 1, 0.5, 1] }}
       style={{ backgroundColor: currentHero.bgColor }}
       className="bento-card relative overflow-hidden p-6 sm:p-8 lg:p-10 flex flex-col justify-between min-h-[480px] lg:min-h-[540px] transition-colors duration-500 rounded-[36px] shadow-xl border border-black/5"
     >

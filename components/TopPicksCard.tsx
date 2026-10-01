@@ -13,9 +13,10 @@ export const TopPicksCard: React.FC = () => {
   return (
     <motion.div
       id="top-picks"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: 0.3 }}
+      initial={{ opacity: 0, y: 40, scale: 0.97 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: false, amount: 0.15 }}
+      transition={{ duration: 0.6, ease: [0.25, 1, 0.5, 1] }}
       className="bento-card bg-[#FFFDF9] p-6 sm:p-8 lg:p-10 flex flex-col justify-between rounded-[36px] border border-[#123C2B]/10 shadow-xl"
     >
       {/* Header */}
@@ -39,8 +40,11 @@ export const TopPicksCard: React.FC = () => {
         {topPicks.map((product, index) => (
           <motion.div
             key={product.id}
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.2 }}
             whileHover={{ x: 6, backgroundColor: '#F7F4ED' }}
-            transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+            transition={{ duration: 0.4, delay: index * 0.06 }}
             className="group p-3 sm:p-4 rounded-3xl border border-transparent hover:border-[#123C2B]/10 transition-all flex items-center justify-between gap-4 cursor-pointer"
             onClick={() => addToCart(product)}
           >

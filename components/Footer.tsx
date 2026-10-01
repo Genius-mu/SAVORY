@@ -20,7 +20,13 @@ export const Footer: React.FC = () => {
     <footer className="bg-[#123C2B] text-[#F7F4ED] pt-16 pb-12 rounded-t-[44px] mt-20 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Top Newsletter Bento Box inside Footer */}
-        <div className="bg-[#F9D661] text-[#123C2B] p-8 sm:p-10 rounded-[36px] mb-16 flex flex-col md:flex-row items-center justify-between gap-6 shadow-2xl relative overflow-hidden">
+        <motion.div
+          initial={{ opacity: 0, y: 40, scale: 0.97 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: false, amount: 0.2 }}
+          transition={{ duration: 0.6, ease: [0.25, 1, 0.5, 1] }}
+          className="bg-[#F9D661] text-[#123C2B] p-8 sm:p-10 rounded-[36px] mb-16 flex flex-col md:flex-row items-center justify-between gap-6 shadow-2xl relative overflow-hidden"
+        >
           <div className="max-w-md">
             <span className="text-[11px] font-extrabold tracking-widest uppercase bg-[#123C2B] text-[#F7F4ED] px-3.5 py-1 rounded-full">
               JOIN THE CRAVE CLUB
@@ -60,7 +66,7 @@ export const Footer: React.FC = () => {
               </>
             )}
           </form>
-        </div>
+        </motion.div>
 
         {/* Footer Main Links Grid */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-white/10">
