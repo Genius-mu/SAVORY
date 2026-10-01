@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { PRODUCTS } from '@/data/products';
 import { Product, Category } from '@/types';
 import { useCart } from '@/context/CartContext';
-import { Search, SlidersHorizontal, Plus, Star, Clock, Flame, Sparkles } from 'lucide-react';
+import { Search, SlidersHorizontal, Plus, Star, Clock, Flame } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface MenuSectionProps {

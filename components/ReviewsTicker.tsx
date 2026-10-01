@@ -13,10 +13,22 @@ export const ReviewsTicker: React.FC = () => {
     { quote: "Finally a fast-food brand that takes ingredients seriously.", author: "Chef Julian B." },
   ];
 
+  // Quadruple items to ensure flawless seam-free infinite scroll at any screen width
+  const marqueeItems = [...reviews, ...reviews, ...reviews, ...reviews];
+
   return (
-    <div className="bg-[#F9D661] border-y border-[#123C2B]/10 py-3 overflow-hidden select-none">
-      <div className="flex items-center gap-8 animate-marquee whitespace-nowrap">
-        {[...reviews, ...reviews, ...reviews].map((rev, idx) => (
+    <div className="bg-[#F9D661] border-y border-[#123C2B]/10 py-3.5 overflow-hidden select-none relative flex items-center">
+      <motion.div
+        className="flex items-center gap-8 whitespace-nowrap min-w-max"
+        animate={{ x: ['0%', '-50%'] }}
+        transition={{
+          repeat: Infinity,
+          repeatType: 'loop',
+          duration: 30,
+          ease: 'linear',
+        }}
+      >
+        {marqueeItems.map((rev, idx) => (
           <div key={idx} className="flex items-center gap-3 font-display font-extrabold text-xs sm:text-sm text-[#123C2B]">
             <div className="flex items-center gap-1 text-[#123C2B]">
               <Star className="w-3.5 h-3.5 fill-[#123C2B] text-[#123C2B]" />
@@ -32,7 +44,7 @@ export const ReviewsTicker: React.FC = () => {
             <Flame className="w-4 h-4 text-[#123C2B] opacity-40 ml-4" />
           </div>
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 };
