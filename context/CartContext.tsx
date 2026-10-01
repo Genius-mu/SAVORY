@@ -56,26 +56,53 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     branch: 'Brooklyn Craft Kitchen (1.2 miles away)',
   });
 
-  // Load cart from localStorage on mount
+  const [isLoaded, setIsLoaded] = useState<boolean>(false);
+
+  // Load cart & settings from localStorage on mount
   useEffect(() => {
     try {
       const savedCart = localStorage.getItem('savory_cart');
       if (savedCart) {
-        setCart(JSON.parse(savedCart));
+        const parsed = JSON.parse(savedCart);
+        if (Array.isArray(parsed)) {
+          setCart(parsed);
+        }
       }
-    } catch {
-      // Ignore storage errors
+      const savedCoupon = localStorage.getItem('savory_coupon');
+      if (savedCoupon) {
+        setCouponCode(savedCoupon);
+        setDiscountPercentage(20);
+      }
+      const savedDelivery = localStorage.getItem('savory_delivery');
+      if (savedDelivery) {
+        setDeliveryDetails(JSON.parse(savedDelivery));
+      }
+    } catch (e) {
+      console.error('Failed to load cart from localStorage:', e);
+    } finally {
+      setIsLoaded(true);
     }
   }, []);
 
-  // Save cart to localStorage on change
+  // Save cart to localStorage on change ONLY after initial load completes
   useEffect(() => {
+    if (!isLoaded) return;
     try {
       localStorage.setItem('savory_cart', JSON.stringify(cart));
-    } catch {
-      // Ignore storage errors
+    } catch (e) {
+      console.error('Failed to save cart to localStorage:', e);
     }
-  }, [cart]);
+  }, [cart, isLoaded]);
+
+  // Save delivery details to localStorage
+  useEffect(() => {
+    if (!isLoaded) return;
+    try {
+      localStorage.setItem('savory_delivery', JSON.stringify(deliveryDetails));
+    } catch (e) {
+      console.error('Failed to save delivery details:', e);
+    }
+  }, [deliveryDetails, isLoaded]);
 
   const triggerConfetti = () => {
     confetti({
@@ -153,6 +180,11 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setCart([]);
     setCouponCode('');
     setDiscountPercentage(0);
+    try {
+      localStorage.removeItem('savory_coupon');
+    } catch {
+      // Ignore
+    }
   };
 
   const applyCoupon = (code: string) => {
@@ -160,11 +192,21 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     if (cleanCode === 'SAVORY20' || cleanCode === 'CRAVE20') {
       setCouponCode(cleanCode);
       setDiscountPercentage(20);
+      try {
+        localStorage.setItem('savory_coupon', cleanCode);
+      } catch {
+        // Ignore
+      }
       showToast('🎉 Coupon SAVORY20 applied! 20% OFF');
       return true;
     } else if (cleanCode === 'FREESHIP') {
       setCouponCode(cleanCode);
       setDiscountPercentage(10);
+      try {
+        localStorage.setItem('savory_coupon', cleanCode);
+      } catch {
+        // Ignore
+      }
       showToast('🎉 Free Shipping Coupon applied!');
       return true;
     }
