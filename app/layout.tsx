@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Bricolage_Grotesque, Plus_Jakarta_Sans } from "next/font/google";
+import { AppLayoutWrapper } from "@/components/AppLayoutWrapper";
 import "./globals.css";
 
 const bricolage = Bricolage_Grotesque({
@@ -33,7 +34,7 @@ export default function RootLayout({
       className={`${bricolage.variable} ${plusJakarta.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-[#F7F4ED] text-[#123C2B] font-body selection:bg-[#123C2B] selection:text-[#F7F4ED]">
-        {children}
+        <AppLayoutWrapper>{children}</AppLayoutWrapper>
       </body>
     </html>
   );

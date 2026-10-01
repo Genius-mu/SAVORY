@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 import { Flame, ArrowRight, MapPin, Clock, Heart, Share2, Globe } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -109,11 +110,10 @@ export const Footer: React.FC = () => {
               CRAVE SELECTIONS
             </h4>
             <ul className="space-y-2.5 text-xs text-gray-300 font-bold">
-              <li><a href="#hero" className="hover:text-white transition-colors">Double Smash Burgers</a></li>
-              <li><a href="#hero" className="hover:text-white transition-colors">Wood-Fired Pizza</a></li>
-              <li><a href="#hero" className="hover:text-white transition-colors">Chicken Shawarma Wraps</a></li>
-              <li><a href="#combo-builder" className="hover:text-white transition-colors">Custom Combo Builder</a></li>
-              <li><a href="#menu" className="hover:text-white transition-colors">Loaded Fries & Wings</a></li>
+              <li><Link href="/menu" className="hover:text-white transition-colors">Full Craft Menu Catalog</Link></li>
+              <li><Link href="/combos" className="hover:text-white transition-colors">Custom Combo Builder</Link></li>
+              <li><Link href="/about" className="hover:text-white transition-colors">Our Craft Manifesto</Link></li>
+              <li><Link href="/locations" className="hover:text-white transition-colors">Store Locations & Hours</Link></li>
             </ul>
           </div>
 
