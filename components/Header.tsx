@@ -1,6 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useCart } from '@/context/CartContext';
 import { ShoppingBag, Flame, MapPin, Menu as MenuIcon, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -8,6 +10,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 export const Header: React.FC = () => {
   const { totalItemsCount, totalPrice, setIsCartOpen, deliveryDetails, setDeliveryDetails } = useCart();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   const toggleMethod = () => {
     setDeliveryDetails((prev) => ({
@@ -16,12 +19,20 @@ export const Header: React.FC = () => {
     }));
   };
 
+  const navLinks = [
+    { label: 'Craves', href: '/' },
+    { label: 'Full Menu', href: '/menu' },
+    { label: 'Combos', href: '/combos' },
+    { label: 'Our Craft', href: '/about' },
+    { label: 'Locations', href: '/locations' },
+  ];
+
   return (
     <header className="sticky top-4 z-40 px-4 md:px-8 max-w-7xl mx-auto w-full">
       <div className="bg-[#FFFDF9]/90 backdrop-blur-md border border-[#123C2B]/10 rounded-full px-5 py-3 shadow-lg shadow-[#123C2B]/5 flex items-center justify-between transition-all">
         
         {/* Left: Brand Identity */}
-        <a href="#" className="flex items-center gap-2.5 group">
+        <Link href="/" className="flex items-center gap-2.5 group">
           <div className="w-10 h-10 rounded-full bg-[#123C2B] text-[#F9D661] flex items-center justify-center shadow-md group-hover:scale-105 transition-transform duration-300">
             <Flame className="w-5 h-5 fill-[#F9D661] text-[#123C2B] animate-pulse" />
           </div>
@@ -33,34 +44,26 @@ export const Header: React.FC = () => {
               CRAFT FOOD CLUB
             </span>
           </div>
-        </a>
+        </Link>
 
         {/* Center: Navigation Links */}
         <nav className="hidden md:flex items-center gap-1 bg-[#F7F4ED] p-1.5 rounded-full border border-[#123C2B]/5 text-sm font-bold text-[#123C2B]">
-          <a
-            href="#hero"
-            className="px-4 py-1.5 rounded-full hover:bg-white transition-colors"
-          >
-            Craves
-          </a>
-          <a
-            href="#top-picks"
-            className="px-4 py-1.5 rounded-full hover:bg-white transition-colors"
-          >
-            Top Picks
-          </a>
-          <a
-            href="#menu"
-            className="px-4 py-1.5 rounded-full hover:bg-white transition-colors"
-          >
-            Full Menu
-          </a>
-          <a
-            href="#combo-builder"
-            className="px-4 py-1.5 rounded-full hover:bg-white text-[#FF6B6B] flex items-center gap-1 transition-colors"
-          >
-            Combos
-          </a>
+          {navLinks.map((link) => {
+            const isActive = pathname === link.href;
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`px-4 py-1.5 rounded-full transition-all ${
+                  isActive
+                    ? 'bg-[#123C2B] text-[#F7F4ED] shadow-sm'
+                    : 'hover:bg-white text-[#123C2B]'
+                }`}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
         </nav>
 
         {/* Right Actions: Pickup/Delivery switch & Cart Button */}
@@ -126,34 +129,19 @@ export const Header: React.FC = () => {
             exit={{ opacity: 0, y: -10 }}
             className="md:hidden mt-2 bg-[#FFFDF9] border border-[#123C2B]/10 rounded-3xl p-5 shadow-xl flex flex-col gap-3 font-display font-bold text-lg text-[#123C2B]"
           >
-            <a
-              href="#hero"
-              onClick={() => setMobileMenuOpen(false)}
-              className="py-2 border-b border-gray-100"
-            >
-              Craves
-            </a>
-            <a
-              href="#top-picks"
-              onClick={() => setMobileMenuOpen(false)}
-              className="py-2 border-b border-gray-100"
-            >
-              Top Picks
-            </a>
-            <a
-              href="#menu"
-              onClick={() => setMobileMenuOpen(false)}
-              className="py-2 border-b border-gray-100"
-            >
-              Full Menu
-            </a>
-            <a
-              href="#combo-builder"
-              onClick={() => setMobileMenuOpen(false)}
-              className="py-2 text-[#FF6B6B] flex items-center gap-2"
-            >
-              Combo Crave Builder
-            </a>
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className={`py-2 border-b border-gray-100 flex items-center justify-between ${
+                  pathname === link.href ? 'text-[#FF8A50] font-black' : ''
+                }`}
+              >
+                <span>{link.label}</span>
+                {pathname === link.href && <span className="text-xs bg-[#FF8A50]/10 text-[#FF8A50] px-2 py-0.5 rounded-full">Active</span>}
+              </Link>
+            ))}
             <div className="pt-2 flex items-center justify-between text-sm">
               <span className="font-sans font-semibold text-gray-500">Order Type:</span>
               <button

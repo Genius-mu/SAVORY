@@ -69,7 +69,13 @@ export const Footer: React.FC = () => {
         </motion.div>
 
         {/* Footer Main Links Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-white/10">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.1 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-white/10"
+        >
           {/* Col 1: Brand Info */}
           <div className="space-y-4">
             <div className="flex items-center gap-2.5">
@@ -144,7 +150,7 @@ export const Footer: React.FC = () => {
               100% SATISFACTION GUARANTEED
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Bottom Copyright Bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-400 font-medium">
