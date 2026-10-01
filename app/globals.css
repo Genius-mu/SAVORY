@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-cream: #F7F4ED;
+    --brand-dark: #123C2B;
+    --brand-dark-hover: #0B291D;
+    --accent-yellow: #F9D661;
+    --accent-orange: #FF8A50;
+    --accent-peach: #FFB088;
+    --accent-coral: #FF6B6B;
+    --accent-blue: #BAE6FD;
+    --accent-mint: #A7F3D0;
+    --font-display: 'Bricolage Grotesque', sans-serif;
+    --font-sans: 'Plus Jakarta Sans', sans-serif;
+  }
+
+  body {
+    background-color: var(--bg-cream);
+    color: var(--brand-dark);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-body {
+  font-family: var(--font-sans);
+}
+
+/* Custom Bento Box Card styling with tactile feel */
+.bento-card {
+  border-radius: 32px;
+  box-shadow: 0 10px 30px -5px rgba(18, 60, 43, 0.05), 0 4px 12px -2px rgba(18, 60, 43, 0.03);
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+}
+
+.bento-card:hover {
+  box-shadow: 0 16px 40px -10px rgba(18, 60, 43, 0.1), 0 8px 16px -4px rgba(18, 60, 43, 0.05);
+}
+
+/* Sticker badge effect */
+.sticker-badge {
+  background-color: var(--brand-dark);
+  color: #F7F4ED;
+  box-shadow: 0 8px 20px -4px rgba(18, 60, 43, 0.3);
+  transform: rotate(-3deg);
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.sticker-badge:hover {
+  transform: rotate(1deg) scale(1.05);
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F7F4ED;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* Tactile button pressed effect */
+.tactile-btn {
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tactile-btn:active {
+  transform: scale(0.96);
+}
