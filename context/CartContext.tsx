@@ -19,6 +19,10 @@ interface CartContextType {
   setIsCartOpen: (open: boolean) => void;
   isCheckoutOpen: boolean;
   setIsCheckoutOpen: (open: boolean) => void;
+  selectedProductForCustomization: Product | null;
+  setSelectedProductForCustomization: (product: Product | null) => void;
+  openCustomizationModal: (product: Product) => void;
+  closeCustomizationModal: () => void;
   couponCode: string;
   discountPercentage: number;
   applyCoupon: (code: string) => boolean;
@@ -43,10 +47,19 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [cart, setCart] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState<boolean>(false);
   const [isCheckoutOpen, setIsCheckoutOpen] = useState<boolean>(false);
+  const [selectedProductForCustomization, setSelectedProductForCustomization] = useState<Product | null>(null);
   const [couponCode, setCouponCode] = useState<string>('');
   const [discountPercentage, setDiscountPercentage] = useState<number>(0);
   const [tipPercentage, setTipPercentage] = useState<number>(15);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
+
+  const openCustomizationModal = (product: Product) => {
+    setSelectedProductForCustomization(product);
+  };
+
+  const closeCustomizationModal = () => {
+    setSelectedProductForCustomization(null);
+  };
 
   const [deliveryDetails, setDeliveryDetails] = useState<DeliveryDetails>({
     method: 'delivery',
@@ -234,6 +247,10 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
         setIsCartOpen,
         isCheckoutOpen,
         setIsCheckoutOpen,
+        selectedProductForCustomization,
+        setSelectedProductForCustomization,
+        openCustomizationModal,
+        closeCustomizationModal,
         couponCode,
         discountPercentage,
         applyCoupon,

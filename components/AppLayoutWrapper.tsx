@@ -12,9 +12,7 @@ import { Check } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 function InnerShell({ children }: { children: React.ReactNode }) {
-  const [selectedProductForCustomization, setSelectedProductForCustomization] =
-    useState<Product | null>(null);
-  const { toastMessage } = useCart();
+  const { toastMessage, selectedProductForCustomization, closeCustomizationModal } = useCart();
 
   return (
     <div className="min-h-screen bg-[#F7F4ED] text-[#123C2B] font-body selection:bg-[#123C2B] selection:text-[#F7F4ED] flex flex-col justify-between overflow-x-hidden">
@@ -40,11 +38,7 @@ function InnerShell({ children }: { children: React.ReactNode }) {
 
       {/* Main Page Body */}
       <main className="max-w-7xl mx-auto px-4 md:px-8 w-full mt-6 space-y-8 flex-1">
-        {React.isValidElement(children)
-          ? React.cloneElement(children as React.ReactElement<any>, {
-              onSelectProductToCustomize: (p: Product) => setSelectedProductForCustomization(p),
-            })
-          : children}
+        {children}
       </main>
 
       {/* Cart Drawer */}
@@ -53,7 +47,7 @@ function InnerShell({ children }: { children: React.ReactNode }) {
       {/* Product Customization Modal */}
       <ProductDetailModal
         product={selectedProductForCustomization}
-        onClose={() => setSelectedProductForCustomization(null)}
+        onClose={closeCustomizationModal}
       />
 
       {/* Checkout Modal */}
