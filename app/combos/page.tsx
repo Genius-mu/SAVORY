@@ -18,25 +18,25 @@ export default function CombosPage() {
         initial={{ opacity: 0, y: 30, scale: 0.98 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.5 }}
-        className="bento-card bg-[#FF8A50] text-white p-8 sm:p-12 rounded-[36px] border border-black/5 shadow-xl relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-6"
+        className="bento-card bg-[#FF8A50] text-white p-5 sm:p-12 rounded-[28px] sm:rounded-[36px] border border-black/5 shadow-xl relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-6"
       >
         <div className="max-w-xl">
-          <span className="inline-flex items-center gap-1.5 text-[11px] font-extrabold tracking-widest uppercase bg-[#123C2B] text-[#F9D661] px-3.5 py-1 rounded-full shadow-md">
+          <span className="inline-flex items-center gap-1.5 text-[10px] sm:text-[11px] font-extrabold tracking-widest uppercase bg-[#123C2B] text-[#F9D661] px-3 py-1 sm:px-3.5 sm:py-1 rounded-full shadow-md">
             <Gift className="w-3.5 h-3.5 text-[#F9D661]" />
             BUNDLE & SAVE BIG
           </span>
-          <h1 className="font-display font-black text-4xl sm:text-6xl leading-tight mt-3 text-white">
+          <h1 className="font-display font-black text-2xl sm:text-4xl lg:text-6xl leading-tight mt-2 sm:mt-3 text-white">
             CRAVE COMBOS & BUNDLES
           </h1>
-          <p className="text-sm sm:text-base font-semibold text-white/90 mt-2 leading-relaxed">
+          <p className="text-xs sm:text-base font-semibold text-white/90 mt-2 leading-relaxed">
             Mix and match your favorite Double Smash Burgers, Wood-Fired Pizza, and Rotisserie Shawarma into custom combos with automatic 20% savings!
           </p>
         </div>
 
-        <div className="bg-[#123C2B] text-[#F9D661] p-6 rounded-3xl flex flex-col items-center justify-center text-center shadow-2xl border-2 border-[#F9D661]">
-          <Percent className="w-10 h-10 text-[#F9D661] mb-1" />
-          <div className="font-display font-black text-2xl text-white">SAVE UP TO 20%</div>
-          <div className="text-xs text-[#F9D661] font-bold mt-1">ON EVERY CUSTOM BUNDLE</div>
+        <div className="bg-[#123C2B] text-[#F9D661] p-4 sm:p-6 rounded-2xl sm:rounded-3xl flex flex-col items-center justify-center text-center shadow-2xl border-2 border-[#F9D661]">
+          <Percent className="w-8 h-8 sm:w-10 sm:h-10 text-[#F9D661] mb-1" />
+          <div className="font-display font-black text-lg sm:text-2xl text-white">SAVE UP TO 20%</div>
+          <div className="text-[10px] sm:text-xs text-[#F9D661] font-bold mt-0.5 sm:mt-1">ON EVERY CUSTOM BUNDLE</div>
         </div>
       </motion.div>
 
