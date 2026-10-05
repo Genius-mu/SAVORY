@@ -17,16 +17,16 @@ export const DailyDealCard: React.FC = () => {
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
       viewport={{ once: false, amount: 0.2 }}
       transition={{ duration: 0.5, delay: 0.2 }}
-      className="bento-card bg-[#FFB088] p-6 sm:p-8 flex flex-col justify-between relative overflow-hidden min-h-[300px] sm:min-h-[340px] rounded-[36px] border border-black/5"
+      className="bento-card bg-[#FFB088] p-4 sm:p-8 flex flex-col justify-between relative overflow-hidden min-h-[260px] sm:min-h-[340px] rounded-[28px] sm:rounded-[36px] border border-black/5"
     >
       {/* Background Micro Label */}
       <div className="relative z-10 flex items-start justify-between">
         <div>
-          <span className="inline-flex items-center gap-1 text-[11px] font-extrabold tracking-widest text-[#123C2B] uppercase bg-white/60 px-3 py-1 rounded-full border border-black/5">
+          <span className="inline-flex items-center gap-1 text-[10px] sm:text-[11px] font-extrabold tracking-widest text-[#123C2B] uppercase bg-white/60 px-2.5 py-1 sm:px-3 sm:py-1 rounded-full border border-black/5">
             <Tag className="w-3 h-3 text-[#123C2B]" />
             DAILY CRAVE DEAL
           </span>
-          <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-[#123C2B] leading-none mt-2">
+          <h2 className="font-display font-extrabold text-2xl sm:text-4xl text-[#123C2B] leading-none mt-1.5 sm:mt-2">
             EVERYDAY
           </h2>
           <p className="text-xs sm:text-sm font-semibold text-[#123C2B]/80 mt-1 max-w-[190px]">
@@ -37,14 +37,14 @@ export const DailyDealCard: React.FC = () => {
         {/* Sticker Price Oval */}
         <motion.div
           whileHover={{ rotate: 0, scale: 1.05 }}
-          className="sticker-badge cursor-pointer px-4 py-2 rounded-full font-display font-extrabold text-sm sm:text-base border-2 border-[#F9D661]"
+          className="sticker-badge cursor-pointer px-3 py-1.5 sm:px-4 sm:py-2 rounded-full font-display font-extrabold text-xs sm:text-base border-2 border-[#F9D661]"
         >
           $10.00
         </motion.div>
       </div>
 
       {/* Main Cutout Shawarma Visual */}
-      <div className="relative z-10 my-2 flex items-center justify-center">
+      <div className="relative z-10 my-1 sm:my-2 flex items-center justify-center">
         <motion.div
           whileHover={{ scale: 1.06, rotate: -2 }}
           transition={{ type: 'spring', stiffness: 300 }}
@@ -54,7 +54,7 @@ export const DailyDealCard: React.FC = () => {
           <img
             src="/images/shawarma.jpg"
             alt="Shawarma Daily Deal"
-            className="w-48 h-48 sm:w-56 sm:h-56 object-contain filter drop-shadow-[0_15px_20px_rgba(18,60,43,0.2)]"
+            className="w-36 h-36 sm:w-56 sm:h-56 object-contain filter drop-shadow-[0_15px_20px_rgba(18,60,43,0.2)]"
           />
           <div className="absolute bottom-2 right-2 bg-[#123C2B] text-[#F9D661] p-2 rounded-full shadow-lg">
             <Flame className="w-4 h-4" />

@@ -14,7 +14,7 @@ export const DeliveryCard: React.FC = () => {
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
       viewport={{ once: false, amount: 0.2 }}
       transition={{ duration: 0.5, delay: 0.1 }}
-      className="bento-card bg-[#BAE6FD] p-6 sm:p-8 flex flex-col justify-between relative overflow-hidden min-h-[300px] sm:min-h-[340px] rounded-[36px] border border-black/5"
+      className="bento-card bg-[#BAE6FD] p-4 sm:p-8 flex flex-col justify-between relative overflow-hidden min-h-[260px] sm:min-h-[340px] rounded-[28px] sm:rounded-[36px] border border-black/5"
     >
       {/* Playful Dotted Path Vector Overlay */}
       <svg
@@ -33,10 +33,10 @@ export const DeliveryCard: React.FC = () => {
       {/* Top Header */}
       <div className="relative z-10 flex items-start justify-between">
         <div>
-          <span className="text-[11px] font-extrabold tracking-widest text-[#123C2B]/70 uppercase bg-white/60 px-3 py-1 rounded-full border border-black/5">
+          <span className="text-[10px] sm:text-[11px] font-extrabold tracking-widest text-[#123C2B]/70 uppercase bg-white/60 px-2.5 py-1 sm:px-3 sm:py-1 rounded-full border border-black/5">
             FAST TRACK
           </span>
-          <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-[#123C2B] leading-none mt-2">
+          <h2 className="font-display font-extrabold text-2xl sm:text-4xl text-[#123C2B] leading-none mt-1.5 sm:mt-2">
             DELIVERY
           </h2>
           <p className="text-xs sm:text-sm font-semibold text-[#123C2B]/80 mt-1 max-w-[200px]">
@@ -45,15 +45,15 @@ export const DeliveryCard: React.FC = () => {
         </div>
 
         {/* Live ETA Badge */}
-        <div className="bg-[#123C2B] text-[#F7F4ED] px-3 py-1.5 rounded-2xl flex flex-col items-center shadow-md">
-          <Clock className="w-4 h-4 text-[#F9D661]" />
-          <span className="text-[10px] font-extrabold uppercase mt-0.5">ETA</span>
-          <span className="text-xs font-black text-[#F9D661]">20-30 MIN</span>
+        <div className="bg-[#123C2B] text-[#F7F4ED] px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-2xl flex flex-col items-center shadow-md">
+          <Clock className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#F9D661]" />
+          <span className="text-[9px] sm:text-[10px] font-extrabold uppercase mt-0.5">ETA</span>
+          <span className="text-[11px] sm:text-xs font-black text-[#F9D661]">20-30 MIN</span>
         </div>
       </div>
 
       {/* Delivery Graphic Illustration */}
-      <div className="relative z-10 my-2 flex items-center justify-center">
+      <div className="relative z-10 my-1 sm:my-2 flex items-center justify-center">
         <motion.div
           whileHover={{ x: 8, rotate: 2 }}
           transition={{ type: 'spring', stiffness: 300 }}
@@ -62,7 +62,7 @@ export const DeliveryCard: React.FC = () => {
           <img
             src="/images/delivery.jpg"
             alt="Delivery Scooter"
-            className="w-44 h-44 sm:w-52 sm:h-52 object-contain filter drop-shadow-[0_12px_15px_rgba(18,60,43,0.15)]"
+            className="w-36 h-36 sm:w-52 sm:h-52 object-contain filter drop-shadow-[0_12px_15px_rgba(18,60,43,0.15)]"
           />
         </motion.div>
       </div>

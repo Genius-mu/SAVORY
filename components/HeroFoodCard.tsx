@@ -162,30 +162,6 @@ export const HeroFoodCard: React.FC = () => {
           })}
         </div>
       </div>
-                onClick={() => setActiveIndex(idx)}
-                className={`relative w-12 h-12 rounded-full overflow-hidden border-2 transition-all cursor-pointer flex items-center justify-center ${
-                  isActive
-                    ? 'border-[#123C2B] scale-110 shadow-md ring-2 ring-[#123C2B]/20'
-                    : 'border-transparent opacity-70 hover:opacity-100 hover:scale-105'
-                }`}
-                title={item.name}
-              >
-                <img
-                  src={item.image}
-                  alt={item.name}
-                  className="w-full h-full object-cover"
-                />
-                {isActive && (
-                  <motion.div
-                    layoutId="hero-selector-indicator"
-                    className="absolute inset-0 bg-[#123C2B]/10 rounded-full"
-                  />
-                )}
-              </button>
-            );
-          })}
-        </div>
-      </div>
     </motion.div>
   );
 };

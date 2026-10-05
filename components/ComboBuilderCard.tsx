@@ -52,16 +52,16 @@ export const ComboBuilderCard: React.FC = () => {
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
       viewport={{ once: false, amount: 0.15 }}
       transition={{ duration: 0.6, ease: [0.25, 1, 0.5, 1] }}
-      className="bento-card bg-[#A7F3D0] p-6 sm:p-8 lg:p-10 flex flex-col justify-between rounded-[36px] border border-black/5 shadow-xl relative overflow-hidden"
+      className="bento-card bg-[#A7F3D0] p-4 sm:p-8 lg:p-10 flex flex-col justify-between rounded-[28px] sm:rounded-[36px] border border-black/5 shadow-xl relative overflow-hidden"
     >
       {/* Decorative badge */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 mb-4 sm:mb-6">
         <div>
-          <span className="inline-flex items-center gap-1.5 text-[11px] font-extrabold tracking-widest text-[#123C2B] uppercase bg-white/70 px-3.5 py-1 rounded-full border border-black/5">
+          <span className="inline-flex items-center gap-1.5 text-[10px] sm:text-[11px] font-extrabold tracking-widest text-[#123C2B] uppercase bg-white/70 px-3 py-1 sm:px-3.5 sm:py-1 rounded-full border border-black/5">
             <Flame className="w-3.5 h-3.5 text-[#123C2B]" />
             CUSTOM CRAVE BUILDER
           </span>
-          <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-[#123C2B] leading-none mt-2">
+          <h2 className="font-display font-extrabold text-2xl sm:text-4xl text-[#123C2B] leading-none mt-1.5 sm:mt-2">
             BUILD YOUR COMBO
           </h2>
           <p className="text-xs sm:text-sm font-semibold text-[#123C2B]/80 mt-1">
@@ -69,20 +69,20 @@ export const ComboBuilderCard: React.FC = () => {
           </p>
         </div>
 
-        <div className="bg-[#123C2B] text-[#F9D661] px-4 py-2 rounded-2xl flex items-center gap-2 shadow-md">
-          <Gift className="w-5 h-5 text-[#FF8A50]" />
+        <div className="bg-[#123C2B] text-[#F9D661] px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-2xl flex items-center gap-2 shadow-md w-fit">
+          <Gift className="w-4 h-4 sm:w-5 sm:h-5 text-[#FF8A50]" />
           <div className="flex flex-col">
-            <span className="text-[10px] font-extrabold uppercase text-white">BUNDLE DISCOUNT</span>
-            <span className="font-display font-black text-sm text-[#F9D661]">SAVE 20% OFF</span>
+            <span className="text-[9px] sm:text-[10px] font-extrabold uppercase text-white">BUNDLE DISCOUNT</span>
+            <span className="font-display font-black text-xs sm:text-sm text-[#F9D661]">SAVE 20% OFF</span>
           </div>
         </div>
       </div>
 
       {/* 3 Step Selectors */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 my-2">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4 my-2">
         {/* Step 1: Main */}
-        <div className="bg-white/80 backdrop-blur-sm p-4 rounded-3xl border border-black/5">
-          <span className="text-[11px] font-extrabold uppercase tracking-wider text-[#123C2B]/60 block mb-2">
+        <div className="bg-white/80 backdrop-blur-sm p-3 sm:p-4 rounded-2xl sm:rounded-3xl border border-black/5">
+          <span className="text-[10px] sm:text-[11px] font-extrabold uppercase tracking-wider text-[#123C2B]/60 block mb-2">
             STEP 1: CHOOSE MAIN
           </span>
           <div className="flex flex-col gap-2">
